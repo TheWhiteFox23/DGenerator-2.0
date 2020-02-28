@@ -7,13 +7,17 @@ namespace DungeonGenerator
     {
         private int Width;
         private int Height;
-        private int[][] Grid { get; set; }
+        private int[][] Grid;
+        private int Seed;
+        private Random random;
 
         public MapGrid(int Width, int Height)
         {
             this.Width = Width;
             this.Height = Height;
             Grid = InitializeGrid(Width, Height);
+            this.random = new Random();
+            this.Seed = 0;
         }
         /// <summary>
         /// Create Grid and fill it with 0
@@ -49,7 +53,6 @@ namespace DungeonGenerator
         /// </summary>
         public void BufferImage()
         {
-            Random random = new Random();
             Dictionary<int, byte[]> ColorPallete = new Dictionary<int, byte[]>();
             ColorPallete.Add(0, new byte[] { 0, 0, 0 });
             ImageBuffer image = new ImageBuffer(Width, Height);
@@ -75,6 +78,29 @@ namespace DungeonGenerator
                     }
             }
                 image.save();
+        }
+        public int[][] getGrid()
+        {
+            return Grid;
+        }
+
+        public int getSeed()
+        {
+            return Seed;
+        }
+
+        public void setSeed(int seed)
+        {
+            if(seed == 0)
+            {
+                Console.WriteLine("Seed 0 is reserved - seed will be set to random value");
+                random = new Random();
+            }
+            else
+            {
+                this.Seed = seed;
+                random = new Random(seed);
+            }
         }
     }
 }
