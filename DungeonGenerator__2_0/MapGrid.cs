@@ -35,7 +35,6 @@ namespace DungeonGenerator
 
             return grid;
         }
-
         public int GetWidth()
         {
             return Width;
@@ -83,12 +82,10 @@ namespace DungeonGenerator
         {
             return Grid;
         }
-
         public int getSeed()
         {
             return Seed;
         }
-
         public void setSeed(int seed)
         {
             if(seed == 0)

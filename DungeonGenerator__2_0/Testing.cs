@@ -53,8 +53,8 @@ namespace DungeonGenerator
                 int y1 = testedValues[i][3];
                 Console.WriteLine("Tested points : x0:{0} , y0{1}, x1{2}, y1{3} ---- relativeDistance :  {4},   AbsolutDistance ---- {5}",
                     x0, y0, x1, y1,
-                    DungeonGenerator.Drawing.CalculateAproxPointDistance(x0, y0, x1, y1),
-                    DungeonGenerator.Drawing.CalculateAbsolutePointDistance(x0, y0, x1, y1));
+                    Drawing.CalculateAproxPointDistance(x0, y0, x1, y1),
+                    Drawing.CalculateAbsolutePointDistance(x0, y0, x1, y1));
             }
 
         }
@@ -105,7 +105,7 @@ namespace DungeonGenerator
                 int y1 = testedValues[i][3];
                 Console.WriteLine("Tested points : x0: {0} , y0: {1}, x1: {2}, y1: {3} ---- Angle :  {4}",
                     x0, y0, x1, y1,
-                    DungeonGenerator.Drawing.CalculateCurrantAngle(x0, y0, x1, y1));
+                    Drawing.CalculateCurrantAngle(x0, y0, x1, y1));
             }
 
         }
@@ -156,7 +156,7 @@ namespace DungeonGenerator
                 int y1 = testedValues[i][3];
                 Console.WriteLine("Tested points : x0: {0} , y0: {1}, x1: {2}, y1: {3} ",
                     x0, y0, x1, y1);
-                Drawing.DrawLine(x0, y0, x1, y1, grid, ID);
+                    Drawing.DrawLine(x0, y0, x1, y1, grid, ID);
             }
 
         }

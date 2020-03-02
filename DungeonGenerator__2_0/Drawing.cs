@@ -251,17 +251,6 @@ namespace DungeonGenerator
             {
                 differenceY = differenceY *-1;
             }
-            //Console.WriteLine(differenceX);
-            //Console.WriteLine(differenceY);
-            //if(x0>x1 && y0>y1)
-            //{
-            //int differenceX = x0 - x1;
-            //int differenceY = y0 - y1;
-
-            //}else if(x0<x1 && y0 > y1)
-            //{
-            //
-            //}
             if (differenceX == 0)
             {
                 if (y0 > y1) return 90;
