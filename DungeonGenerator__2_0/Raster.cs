@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace DungeonGenerator
 {
-    public class MapGrid
+    public class Raster
     {
         private int Width;
         private int Height;
@@ -11,7 +11,7 @@ namespace DungeonGenerator
         private int Seed;
         private Random random;
 
-        public MapGrid(int Width, int Height)
+        public Raster(int Width, int Height)
         {
             this.Width = Width;
             this.Height = Height;

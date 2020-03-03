@@ -7,7 +7,7 @@ namespace DungeonGenerator
 {
     public static class Drawing
     {
-        public static void DrawLine(int x0, int y0, int x1, int y1, MapGrid Grid, int ID)
+        public static void DrawLine(int x0, int y0, int x1, int y1, Raster Grid, int ID)
         {
             int dx, dy;
             int stepX, stepY;
@@ -138,7 +138,7 @@ namespace DungeonGenerator
             }
         }
 
-        public static void DrawLineAngle(int xCoordinate, int yCoordinate, int angleInDegrees, int length, MapGrid grid, int ID)
+        public static void DrawLineAngle(int xCoordinate, int yCoordinate, int angleInDegrees, int length, Raster grid, int ID)
         {
             //grid.SetTileID(100, 100, 100);
             //Console.WriteLine("WhatTheFuck?");

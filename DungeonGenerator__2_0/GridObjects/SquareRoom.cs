@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DungeonGenerator
 {
-    public class SquareRoom : MapGridObject
+    public class SquareRoom : GridObject
     {
         private int[] CenterPointInGrid;
         private int ID;
@@ -26,25 +26,7 @@ namespace DungeonGenerator
             this.BorderSize_pixels = 1;
             this.Infill = false;
         }        
-        public SquareRoom(int ID, int minSideLength, int maxSideLength)
-        {
-            this.ID = ID;
-            this.Angle = 0;
-            this.SideLength = new Random().Next(minSideLength, maxSideLength);
-            this.Diameter = Math.Sqrt(2 * SideLength * SideLength);
-            this.BorderSize_pixels = 1;
-            this.Infill = false;
-        }
-        public SquareRoom(int ID, int minSideLength, int maxSideLength, int seed)
-        {
-            this.ID = ID;
-            this.Angle = 0;
-            this.SideLength = new Random(seed).Next(minSideLength, maxSideLength);
-            this.Diameter = Math.Sqrt(2 * SideLength * SideLength);
-            this.BorderSize_pixels = 1;
-            this.Infill = false;
-        }
-        public void Draw(MapGrid Grid, int XPointCenter, int YPointCenter)
+        public void Draw(Raster Grid, int XPointCenter, int YPointCenter)
         {
             CenterPointInGrid = new int[] { XPointCenter, YPointCenter };
             //DrawBorders
@@ -84,19 +66,8 @@ namespace DungeonGenerator
             }
         }
 
-
-
-
-
-
-
-
         //GET - SET methods
-        public void setInfill(bool infill)
-        {
-            this.Infill = infill;
 
-        }
         public int getID()
         {
             return ID;
@@ -132,6 +103,10 @@ namespace DungeonGenerator
         public void setBorderSize(int borderSize)
         {
             this.BorderSize_pixels = borderSize;
+        }
+        void GridObject.setInfill(bool Infill)
+        {
+            this.Infill = Infill;
         }
     }
 }

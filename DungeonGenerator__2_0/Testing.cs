@@ -109,7 +109,7 @@ namespace DungeonGenerator
             }
 
         }
-        public void DrawTest(MapGrid grid, int ID)
+        public void DrawTest(Raster grid, int ID)
         {
             Console.WriteLine(" -----------DrawingTest----------- ");
             int[][] testedValues =
