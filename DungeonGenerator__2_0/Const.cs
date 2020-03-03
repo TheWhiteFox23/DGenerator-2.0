@@ -6,9 +6,9 @@ namespace DungeonGenerator
 {
     public static class Const
     {
-        public static int REZERVED = 99;
-        public static int EMPTY = 0;
-        public static int WALL = 1;
-
+        public static int CurrentID = 100;
+        public static readonly int REZERVED = 99;
+        public static readonly int EMPTY = 0;
+        public static readonly int WALL = 1;
     }
 }

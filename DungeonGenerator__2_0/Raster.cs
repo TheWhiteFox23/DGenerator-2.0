@@ -99,5 +99,10 @@ namespace DungeonGenerator
                 random = new Random(seed);
             }
         }
+        public Random getRandom()
+        {
+            return random;
+        }
+
     }
 }

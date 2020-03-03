@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DungeonGenerator
 {
-    interface GridObject
+    public interface GridObject
     {
         //int ID { get; }
         void Draw(Raster Grid, int XPointCenter, int YPointCenter);
@@ -18,5 +18,6 @@ namespace DungeonGenerator
         void setInfill(bool Infill);
         void setBorderSize(int BorderSize);
         int getBorderSize();
+        bool CanBePlaced(Raster RasterGrid, int Xcenter, int Ycenter);
     }
 }

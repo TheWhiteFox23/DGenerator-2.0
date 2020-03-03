@@ -4,13 +4,13 @@ using System.Text;
 
 namespace DungeonGenerator
 {
-    interface GridObjectTemplate
+    public interface GridObjectTemplate
     {
         /// <summary>
         /// Create GridObject baset on given boundaries
         /// </summary>
-        GridObject GenerateGridObject(int ID, Random random);
-        GridObject GenerateGridObject(int ID);
+        GridObject GenerateGridObject(Random random);
+        GridObject GenerateGridObject();
         void setRandomAngle(int MinAngle, int MaxAngle);
         void setFixedAngle(int Angle);
         void ResetAngle();

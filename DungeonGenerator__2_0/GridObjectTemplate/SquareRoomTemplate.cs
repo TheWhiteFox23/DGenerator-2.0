@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DungeonGenerator
 {
-    class SquareRoomTemplate : GridObjectTemplate
+    public class SquareRoomTemplate : GridObjectTemplate
     {
         int SideLengthMin;
         int SideLengthMax;
@@ -25,15 +25,17 @@ namespace DungeonGenerator
 
 
 
-        //Privisory random
+        //Privosory random
         //Random random = new Random();
         public SquareRoomTemplate(int SideLengthMin, int SideLengthMax)
         {
             this.SideLengthMax = SideLengthMax;
-            this.SideLengthMax = SideLengthMin;
+            this.SideLengthMin = SideLengthMin;
         }
-        public GridObject GenerateGridObject(int ID, Random random)
+        public GridObject GenerateGridObject(Random random)
         {
+            int ID = Const.CurrentID;
+            Const.CurrentID++;
             //create GridObject instance
             GridObject squareRoom = new SquareRoom(ID, random.Next(SideLengthMin, SideLengthMax));
 
@@ -62,8 +64,10 @@ namespace DungeonGenerator
             }
         }
 
-        public GridObject GenerateGridObject(int ID)
+        public GridObject GenerateGridObject()
         {
+            int ID = Const.CurrentID;
+            Const.CurrentID++;
             GridObject squareRoom = new SquareRoom(ID, random.Next(SideLengthMin, SideLengthMax));
             SetGridObject(random, squareRoom);
             return squareRoom;

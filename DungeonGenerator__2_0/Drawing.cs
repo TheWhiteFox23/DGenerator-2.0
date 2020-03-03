@@ -74,6 +74,73 @@ namespace DungeonGenerator
 
             }
         }
+        public static void DrawLine(int x0, int y0, int x1, int y1, int[][] Grid, int ID)
+        {
+            int dx, dy;
+            int stepX, stepY;
+
+            dx = (x1 - x0);
+            dy = (y1 - y0);
+
+            if (dy < 0)
+            {
+                dy = -dy;
+                stepY = -1;
+            }
+            else
+            {
+                stepY = 1;
+            }
+            if (dx < 0)
+            {
+                dx = -dx;
+                stepX = -1;
+            }
+            else
+            {
+                stepX = 1;
+            }
+
+            //Im not totaly sure WHY ??????
+            dx <<= 1;
+            dy <<= 1;
+
+            //Check if point is inside of the raster and plot first pixel
+            if ((0 <= x0) && (x0 < Grid[0].Length) && (0 <= y0) && (y0 < Grid.Length)) Grid[y0][x0] = ID;
+            if (dx > dy)
+            {
+                int fraction = dy - (dx >> 1);
+                while (x0 != x1)
+                {
+                    x0 += stepX;
+                    if (fraction >= 0)
+                    {
+                        y0 += stepY;
+                        fraction -= dx;
+
+                    }
+                    fraction += dy;
+                    if ((0 <= x0) && (x0 < Grid[0].Length) && (0 <= y0) && (y0 < Grid.Length)) Grid[y0][x0] = ID;
+                }
+
+            }
+            else
+            {
+                int fraction = dx - (dy >> 1);
+                while (y0 != y1)
+                {
+                    if (fraction >= 0)
+                    {
+                        x0 += stepX;
+                        fraction -= dy;
+                    }
+                    fraction += dx;
+                    y0 += stepY;
+                    if ((0 <= x0) && (x0 < Grid[0].Length) && (0 <= y0) && (y0 < Grid.Length)) Grid[y0][x0] = ID;
+                }
+
+            }
+        }
 
         static double DegreesToRadians(double degrees)
         {
