@@ -33,6 +33,7 @@ namespace DungeonGenerator
                     objectToPLace.Draw(Grid, Xcoordinate, Ycoordinate);
                     objectToPLace = objectTemplate.GenerateGridObject(random);
                     RemainCount--;
+                    Grid.addGridObject(objectToPLace);
                 }
             }
         }

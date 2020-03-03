@@ -10,6 +10,7 @@ namespace DungeonGenerator
         private int[][] Grid;
         private int Seed;
         private Random random;
+        private List<GridObject> gridObjects;
 
         public Raster(int Width, int Height)
         {
@@ -18,6 +19,7 @@ namespace DungeonGenerator
             Grid = InitializeGrid(Width, Height);
             this.random = new Random();
             this.Seed = 0;
+            gridObjects = new List<GridObject>();
         }
         /// <summary>
         /// Create Grid and fill it with 0
@@ -102,6 +104,16 @@ namespace DungeonGenerator
         public Random getRandom()
         {
             return random;
+        }
+
+        public void addGridObject(GridObject gObject)
+        {
+            gridObjects.Add(gObject);
+        }
+
+        public List<GridObject> getGridObjectList()
+        {
+            return gridObjects;
         }
 
     }
