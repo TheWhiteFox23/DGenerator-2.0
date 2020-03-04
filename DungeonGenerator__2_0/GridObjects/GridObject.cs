@@ -19,5 +19,6 @@ namespace DungeonGenerator
         void setBorderSize(int BorderSize);
         int getBorderSize();
         bool CanBePlaced(Raster RasterGrid, int Xcenter, int Ycenter);
+        int[][] FindClosestNeighbourt(Raster Grid);
     }
 }

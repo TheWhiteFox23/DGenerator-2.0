@@ -25,6 +25,7 @@ namespace DungeonGenerator
             this.Diameter = Math.Sqrt(2 * SideLength * SideLength);
             this.BorderSize_pixels = 1;
             this.Infill = false;
+            this.CenterPointInGrid = new int[] { 0, 0 };
         }        
         public void Draw(Raster Grid, int XPointCenter, int YPointCenter)
         {
@@ -168,5 +169,60 @@ namespace DungeonGenerator
             return true;
 
         }
+        public int[][] FindClosestNeighbourt(Raster Grid)
+        {
+            bool neighbourtFound = false;
+            int j = 0;
+            while(!neighbourtFound)
+            {
+                int DiameterShift = (int)(Math.Round(Diameter / 2, MidpointRounding.AwayFromZero)) + j;
+                int[][] extremePoints =
+                {
+                Drawing.GetAngledPoint(CenterPointInGrid[0], CenterPointInGrid[1],(45 +         Angle)%360, DiameterShift), //UperRightCorner
+                Drawing.GetAngledPoint(CenterPointInGrid[0], CenterPointInGrid[1],(45 + 90  +   Angle)%360, DiameterShift), //UperLeftCorner
+                Drawing.GetAngledPoint(CenterPointInGrid[0], CenterPointInGrid[1],(45 + 180 +   Angle)%360, DiameterShift), //LowerLeftCorner
+                Drawing.GetAngledPoint(CenterPointInGrid[0], CenterPointInGrid[1],(45 + 270 +   Angle)%360, DiameterShift)  //LowerRightCorner
+                };
+
+                int[][] sides =
+                {
+                    new int[]{0,1},
+                    new int[]{1,2},
+                    new int[]{2,3},
+                    new int[]{3,0},
+                };
+
+                for (int i = 0; i < sides.Length; i++)
+                {
+                    int x1 = extremePoints[sides[i][0]][0];
+                    int y1 = extremePoints[sides[i][0]][1];
+                    int x2 = extremePoints[sides[i][1]][0];
+                    int y2 = extremePoints[sides[i][1]][1];
+
+                    int[][] searchResult =  Drawing.DrawSearchLine(x1, y1, x2, y2, Grid.getGrid(), ID);
+                    if(searchResult.Length > 0)
+                    {
+                        neighbourtFound = true;
+                        return searchResult;
+                        
+                    }else if((j > Grid.GetWidth() && j > Grid.GetHeight()))
+                    {
+                        neighbourtFound = true;
+                        return new int[][]
+                        {
+                            new int[] {0,0,0},
+                        };
+                        
+                    }
+                }
+                j++;
+            }
+            return new int[][]
+{
+                new int[] {0,0,0},
+            };
+
+        }
     }
+
 }

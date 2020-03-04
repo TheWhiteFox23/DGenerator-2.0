@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace DungeonGenerator
 {
@@ -197,6 +198,39 @@ namespace DungeonGenerator
             }
             buffer.saveColor();
 
+        }
+
+        public void FindClosestTest(Raster grid)
+        {
+            foreach(var v in grid.getGridObjectList())
+            {
+                int[][] searchResult = v.FindClosestNeighbourt(grid);
+                if(searchResult.Length > 0)
+                {
+                    if(searchResult[0][0] == 0)
+                    {
+                        Console.WriteLine("Search Failed");
+                    }
+                    else
+                    {
+                        for(int i = 0; i< searchResult.Length; i++)
+                        {
+                            Console.WriteLine("Object with ID : {0} has closest neighbourt {1} on coordinates X:{2}, Y:{3}", v.getID(), searchResult[i][0], searchResult[i][1], searchResult[i][2]);
+                            int[] centerPoint = new int[] { 0, 0 };
+                            for(int l = 0; l< grid.getGridObjectList().Count; l++)
+                            {
+                                if(grid.getGridObjectList().ElementAt(l).getID() == searchResult[i][0])
+                                {
+                                    centerPoint = grid.getGridObjectList().ElementAt(l).getCenterPoint();
+                                }
+                            }
+                            Console.WriteLine("CenterCoordinate : X:{0}, Y:{1}", v.getCenterPoint()[0], v.getCenterPoint()[1]);
+                            if (v.getCenterPoint()[0] != 0 && v.getCenterPoint()[1] != 0 && centerPoint[0] != 0 && centerPoint[1] != 0)
+                            Drawing.DrawLine(v.getCenterPoint()[0], v.getCenterPoint()[1], centerPoint[0], centerPoint[1], grid.getGrid(), Const.CENTERCONECTION);
+                        }
+                    }
+                }
+            }
         }
     }
 }
