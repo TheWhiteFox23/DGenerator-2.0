@@ -2,11 +2,22 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using System.Windows.Controls;
+
 
 namespace DungeonGenerator
 {
     public class Testing
     {
+        public Testing(bool DebugCanvas)
+        {
+            this.DebugingCanvasOn = DebugCanvas;
+        }        
+        public Testing()
+        {
+            this.DebugingCanvasOn = false;
+        }
+        public bool DebugingCanvasOn = false;
         public void AproximationsTest()
         {
             Console.WriteLine(" -----------AproximationsTests----------- ");
@@ -231,6 +242,11 @@ namespace DungeonGenerator
                     }
                 }
             }
+        }
+
+        public void setDebugungCanvas(bool DebiggingCanvasSetling)
+        {
+            this.DebugingCanvasOn = DebiggingCanvasSetling;
         }
     }
 }
