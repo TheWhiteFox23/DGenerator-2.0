@@ -160,5 +160,43 @@ namespace DungeonGenerator
             }
 
         }
+        public void SearchLineTest(Raster grid)
+        {
+            int Height = grid.GetHeight();
+            int Width = grid.GetWidth();
+            byte[][] returnGrid = new byte[Height][];
+            for(int i = 0; i< Height; i++)
+            {
+                returnGrid[i] = new byte[Width];
+            }
+            for(int i = 0; i<Height; i++)
+            {
+                int[][] searchResult = Drawing.DrawSearchLine(0, i, Width - 1, i, grid.getGrid(), 1);
+                for(int j = 0; j< searchResult.Length; j++)
+                {
+                    returnGrid[searchResult[j][2]][searchResult[j][1]] = 1;
+                }
+            }
+
+            ImageBuffer buffer = new ImageBuffer(Width, Height);
+            for(int i = 0; i<Height; i++)
+            {
+                for(int j = 0; j< Width; j++)
+                {
+                    if(returnGrid[i][j] == 0)
+                    {
+                        buffer.PlotPixel(j, i, 255, 255, 255);
+                    }else if (returnGrid[i][j] == 1)
+                    {
+                        buffer.PlotPixel(j, i, 0, 0, 0);
+                    }else
+                    {
+                        buffer.PlotPixel(j, i, 255, 0, 0);
+                    }
+                }
+            }
+            buffer.saveColor();
+
+        }
     }
 }

@@ -15,7 +15,7 @@ namespace DungeonGenerator
         int MaxAngle = 0;
         int Angle = 0;
         bool FixedAngle = false;
-        bool Infill = false;
+        bool Infill = true;
         bool FixedBorderSize = false;
         int BorderSize = 1;
         int MinBorderSize = 0;
@@ -43,7 +43,6 @@ namespace DungeonGenerator
             SetGridObject(random, squareRoom);
             return squareRoom;
         }
-
         private void SetGridObject(Random random, GridObject squareRoom)
         {
             //set Angle
@@ -103,7 +102,6 @@ namespace DungeonGenerator
             this.BorderSize = BorderSize;
             this.RandomBorderSize = false;
         }
-
         public void setRandomBorderSize(int MinBorderSize, int MaxBorderSize)
         {
             this.MinBorderSize = MinBorderSize;
@@ -111,7 +109,6 @@ namespace DungeonGenerator
             RandomBorderSize = true;
             FixedBorderSize = false;
         }
-
         public void ResetBorderSize()
         {
             BorderSize = 0;
@@ -119,6 +116,17 @@ namespace DungeonGenerator
             MinBorderSize = 0;
             MaxBorderSize = 0;
             RandomBorderSize = false;
+        }
+        public int[] FindClosestNeighbourt()
+        {
+            List<int> neighbourts = new List<int>();
+
+
+
+
+
+
+            return neighbourts.ToArray();
         }
 
 
